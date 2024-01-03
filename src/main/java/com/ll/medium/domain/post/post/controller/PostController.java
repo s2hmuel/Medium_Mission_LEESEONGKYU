@@ -86,12 +86,13 @@ public class PostController {
         @NotBlank
         private String body;
         private boolean isPublished;
+        private boolean isPaid;
     }
 
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/write")
     public String write(@Valid WriteForm form) {
-        Post post = postService.write(rq.getMember(), form.getTitle(), form.getBody(), form.isPublished());
+        Post post = postService.write(rq.getMember(), form.getTitle(), form.getBody(), form.isPublished(), form.isPaid());
 
         return rq.redirect("/post/" + post.getId(), post.getId() + "번 글이 작성되었습니다.");
     }

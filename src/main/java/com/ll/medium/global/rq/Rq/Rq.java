@@ -113,4 +113,8 @@ public class Rq {
 
         return member;
     }
+
+    public boolean isPaid() {
+        return member.isPaid();
+    }
 }
